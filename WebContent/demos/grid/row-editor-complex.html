@@ -138,30 +138,30 @@ table.config-desc td {
 														name : "test",
 														width : 100,
 														editor : {
-															type : "custom",
+															type : "text",
 															editable : true,
-															name : "test",
-															renderer : function render(
-																	obj, rowData,
-																	value) {
-																console.log(value);
-																console.log();
-																console.log(obj);
-																return '<input id="test" name="test" class="grid-edit-text"  value="'+rowData.test+'">'
-																		+ '</input><input type="button" value="选择" id="test_hov" onClick="t()"></input>'
-															},
-															getValue : function(
-																	ins,
-																	rowData,
-																	name) {
-																console.log(ins);
-																rowData.test = $(
-																		"#test")
-																		.val();
-																return $(
-																		"#test")
-																		.val();
-															}
+															name : "test"
+// 															renderer : function render(
+// 																	obj, rowData,
+// 																	value) {
+// 																console.log(value);
+// 																console.log();
+// 																console.log(obj);
+// 																return '<input id="test" name="test" class="grid-edit-text"  value="'+rowData.test+'">'
+// 																		+ '</input><input type="button" value="选择" id="test_hov" onClick="t()"></input>'
+// 															},
+// 															getValue : function(
+// 																	ins,
+// 																	rowData,
+// 																	name) {
+// 																console.log(ins);
+// 																rowData.test = $(
+// 																		"#test")
+// 																		.val();
+// 																return $(
+// 																		"#test")
+// 																		.val();
+// 															}
 														}
 													},
 
@@ -176,10 +176,20 @@ table.config-desc td {
 											onAfterShowEditView : function(){
 												 
 												var width = $("#test").parent().outerWidth(true) ;
+												
+												var a = $("#test").next();
+												
+												if(!$("#test_hov").length){
+													$test_hov=  $('<input type="button" value="选择" id="test_hov"/>').appendTo($("#test").parent());
+													$test_hov.click(function(){
+														t();
+													});
+													$("#test_hov").height($("#test").height());
+												}
 												//alert(width);
 												$("#test").width(width-40);
 												//$("#test_hov").width(28);
-												$("#test_hov").height($("#test").height());
+												
 											}
 										});
 						
