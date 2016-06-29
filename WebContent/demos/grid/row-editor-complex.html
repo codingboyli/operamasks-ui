@@ -132,17 +132,7 @@ table.config-desc td {
 															options : birthdayOptions
 														}
 													},
-													{
-														header : "性别",
-														name : "gender",
-														width : 100,
-														editor : {
-															type : "text",
-															editable : false,
-															name : "gender"
-														},
-														renderer : genderRenderer
-													},
+													{header:"性别",name:"gender",width:100,editor:{type:"omCombo", name:"gender" ,options:genderOptions},renderer:genderRenderer},
 													{
 														header : "test",
 														name : "test",
@@ -164,6 +154,7 @@ table.config-desc td {
 																	ins,
 																	rowData,
 																	name) {
+																console.log(ins);
 																rowData.test = $(
 																		"#test")
 																		.val();
@@ -179,17 +170,19 @@ table.config-desc td {
 														name : "operation",
 														editor : {
 															editable : false,
-															type : "custom",
-															renderer : function render(
-																	obj, value,
-																	rowData) {
-																return ""
-															}
 														}
 													} ],
-											dataSource : "data.json"
+											dataSource : "data.json",
+											onAfterShowEditView : function(){
+												 
+												var width = $("#test").parent().outerWidth(true) ;
+												//alert(width);
+												$("#test").width(width-40);
+												//$("#test_hov").width(28);
+												$("#test_hov").height($("#test").height());
+											}
 										});
-
+						
 						function genderRenderer(value) {
 							if ("female" === value) {
 								return "<span style='color:blue'>美女</span>";

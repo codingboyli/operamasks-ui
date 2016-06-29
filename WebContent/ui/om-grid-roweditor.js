@@ -382,6 +382,21 @@
              *  });
              */
              onBeforeEdit : function(rowIndex , rowData){},
+             
+             /**
+              * 显示编辑界面后调用的方法。
+              * @event
+              * @name omGrid#onAfterShowEditView
+              * @default 无
+              * @example
+              *  $(".selector").omGrid({
+              *      onAfterShowEditView:function(){
+              *          alert("编辑界面显示了");
+              *      }
+              *  });
+              */
+             onAfterShowEditView : function(){},
+             
              /**
              * 编辑一行之后执行的方法。
              * @event
@@ -490,6 +505,8 @@
     		return ;
     	}
     	_showEditView(self , $tr);
+    	
+    	
     	$editRow = self._editView.editRow;
     	$editForm = $editRow.find(">.grid-edit-form");
     	scrollLeft = $elem.parent().scrollLeft();
@@ -608,6 +625,12 @@
 				default:;
 			}
         });
+    	
+    	//after showEditView  add by linn 20160629
+    	if(ops.onAfterShowEditView){
+    		ops.onAfterShowEditView.call(self);
+    	}
+    	
         !self._triggered && self._validate && _bindValidation(self);
         
         self._validator && self._validator.form();//触发校验
