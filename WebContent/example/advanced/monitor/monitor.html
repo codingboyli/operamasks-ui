@@ -145,6 +145,8 @@
            	        id:"north-panel",
            	        region:"north",
            	        header : false,
+           	     	resizable:true,
+        	        collapsible:true,
            	        height : 40
            	    },{
            	        id:"south-panel",
@@ -187,6 +189,15 @@
                         $("#west-panel").omScrollbar("refresh");
                     },
                     onExpand : function(){
+//                     	var id = $(this).attr("id");
+                    	
+                    	 
+                    	
+//                     	  $(menuPanel).each(function(index,v){
+//                     		  if(id!=menuPanel[index].id){
+//                     			  $("#"+menuPanel[index].id).omPanel("collapse");
+//                     		  }
+//                     	  });
                         $("#west-panel").omScrollbar("refresh");
                     }
                 });
