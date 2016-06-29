@@ -18,6 +18,7 @@
 <script type="text/javascript" src="../../ui/om-dialog.js"></script>
 <script type="text/javascript" src="../../ui/om-tree.js"></script>
 <script type="text/javascript" src="../../ui/om-grid-roweditor.js"></script>
+ <script src="../../js/jquery.hotkeys.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="../../themes/default/om-all.css" />
 <link rel="stylesheet" type="text/css" href="../common/css/demo.css" />
@@ -185,6 +186,11 @@ table.config-desc td {
 														t();
 													});
 													$("#test_hov").height($("#test").height());
+													
+													$("#test").bind('keydown', 'f7',function (evt){
+									                    t();
+									                    return false;
+									                });
 												}
 												//alert(width);
 												$("#test").width(width-40);
